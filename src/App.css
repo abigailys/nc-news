@@ -4,3 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+
+.article-card {
+  border: 1px solid rgb(177, 111, 5);
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 20px ;
+}
