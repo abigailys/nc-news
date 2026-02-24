@@ -3,7 +3,7 @@ import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 
 function ArticlesList() {
-    const [articles, setArticles] = useState([])
+    const [articles, setArticles] = useState()
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState();
 
@@ -12,23 +12,26 @@ function ArticlesList() {
             try {
                 setIsLoading(true)
                 const articlesResult = await getArticles()
+                console.log(articlesResult)
                 setArticles(articlesResult);
-            } catch (err) {
-                setError(err.msg || "Something went wrong!");
+            } catch (error) {
+                setError(error.msg || "Something went wrong!");
             } finally {
                 setIsLoading(false);
             }
-}
-            fetchArticles()
-        
+        }
+        fetchArticles()
+
     }, [])
 
-    if (error) {
-    return <div>Error: {error}</div>;
-  }
+    if (isLoading) {
+        return (<p>Loading...</p>)
+    };
+
+
+    console.log(articles)
     return (
         <>
-            <div>{isLoading && "Loading..."}</div>
             <div className="articles-list">
                 {articles.map((article) => (
                     <ArticleCard key={article.article_id} articleObject={article} />

@@ -6,7 +6,7 @@ import dateFormatter from "../utils/dateFormatter";
 
 
 function SingleArticle() {
-    const [article, setArticle] = useState([])
+    const [article, setArticle] = useState()
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState();
 
@@ -28,12 +28,16 @@ function SingleArticle() {
         fetchArticle()
     }, [article_id])
 
+    if (isLoading) {
+        return (<p>Loading...</p>)
+    };
+
     if (!article) {
-    return <div>Article ID does not exist</div>;
-  }
+        return <div>Article ID does not exist</div>;
+    }
     if (error) {
-    return <div>Error: {error}</div>;
-  }
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <>
