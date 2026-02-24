@@ -14,7 +14,7 @@ function CommentsList({ article_id }) {
        fetchComments()
        
     }, [article_id])
-    console.log(comments)
+
     return (
         <>
         <div className="comments-list">

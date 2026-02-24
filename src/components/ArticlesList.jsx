@@ -14,7 +14,7 @@ function ArticlesList() {
                 const articlesResult = await getArticles()
                 setArticles(articlesResult);
             } catch (err) {
-                setError(err.message || "Something went wrong!");
+                setError(err.msg || "Something went wrong!");
             } finally {
                 setIsLoading(false);
             }

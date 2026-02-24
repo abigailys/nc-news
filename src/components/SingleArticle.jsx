@@ -6,36 +6,54 @@ import CommentsList from "./CommentsList";
 
 function SingleArticle() {
     const [article, setArticle] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState();
+
     const { article_id } = useParams();
-
+    
     useEffect(() => {
-       async function fetchArticle() {
-        const articleResult = await getArticleById(article_id)
-        setArticle(articleResult);
-       } 
+        async function fetchArticle() {
+            try {
+                setIsLoading(true)
+                const articleResult = await getArticleById(article_id)
+                setArticle(articleResult);
+            } catch (error) {
+                setError(error.msg || "Something went wrong!");
+            } finally {
+                setIsLoading(false);
+            }
+        }
 
-       fetchArticle()
+        fetchArticle()
     }, [article_id])
+
+    if (!article) {
+    return <div>Article ID does not exist</div>;
+  }
+    if (error) {
+    return <div>Error: {error}</div>;
+  }
 
     return (
         <>
-        <div className="single-article">
-        <h2>{article.title}</h2>
-        <h4>{article.body}</h4>
-        <h6>by {article.author}</h6>
-        <h6>Topic: {article.topic}</h6>
-        <p>Votes: {article.votes}</p>
-        <p>Comments: {article.comment_count}</p>
-        <p>Created at: {article.created_at}</p>
-        <img src={article.article_img_url} alt="" />
-        </div>
+            <div>{isLoading && "Loading..."}</div>
+            <div className="single-article">
+                <h2>{article.title}</h2>
+                <h4>{article.body}</h4>
+                <h6>by {article.author}</h6>
+                <h6>Topic: {article.topic}</h6>
+                <p>Votes: {article.votes}</p>
+                <p>Comments: {article.comment_count}</p>
+                <p>Created at: {article.created_at}</p>
+                <img src={article.article_img_url} alt="" />
+            </div>
 
-        <div className="article-comments">
-        <CommentsList article_id={article_id}/>
-        </div>
+            <div className="article-comments">
+                <CommentsList article_id={article_id} />
+            </div>
         </>
 
-        )
+    )
 }
 
 export default SingleArticle;
