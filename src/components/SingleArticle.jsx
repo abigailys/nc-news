@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
 import CommentsList from "./CommentsList";
+import dateFormatter from "../utils/dateFormatter";
 
 
 function SingleArticle() {
@@ -10,7 +11,7 @@ function SingleArticle() {
     const [error, setError] = useState();
 
     const { article_id } = useParams();
-    
+
     useEffect(() => {
         async function fetchArticle() {
             try {
@@ -44,7 +45,7 @@ function SingleArticle() {
                 <h6>Topic: {article.topic}</h6>
                 <p>Votes: {article.votes}</p>
                 <p>Comments: {article.comment_count}</p>
-                <p>Created at: {article.created_at}</p>
+                <p>Created at: {dateFormatter(article.created_at)}</p>
                 <img src={article.article_img_url} alt="" />
             </div>
 
