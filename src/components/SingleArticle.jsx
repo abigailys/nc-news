@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
-
+import CommentsList from "./CommentsList";
 
 
 function SingleArticle() {
@@ -16,22 +16,25 @@ function SingleArticle() {
 
        fetchArticle()
     }, [article_id])
-    
+
     return (
         <>
-        <>
-        <div className="article-page">
+        <div className="single-article">
         <h2>{article.title}</h2>
         <h4>{article.body}</h4>
         <h6>by {article.author}</h6>
-        <h6>Topic: {article.topic}</h6> §
+        <h6>Topic: {article.topic}</h6>
         <p>Votes: {article.votes}</p>
         <p>Comments: {article.comment_count}</p>
         <p>Created at: {article.created_at}</p>
         <img src={article.article_img_url} alt="" />
         </div>
+
+        <div className="article-comments">
+        <CommentsList article_id={article_id}/>
+        </div>
         </>
-        </>
+
         )
 }
 
