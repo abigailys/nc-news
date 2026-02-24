@@ -21,6 +21,7 @@ function SingleArticle() {
                 setIsLoading(true)
                 const articleResult = await getArticleById(article_id)
                 setArticle(articleResult);
+                setVotes(articleResult.votes); 
             } catch (error) {
                 setError(error.msg || "Something went wrong!");
             } finally {
