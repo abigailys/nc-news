@@ -14,7 +14,9 @@ function ArticleCard({articleObject}) {
         <p>Created at: {dateFormatter(articleObject.created_at)}</p>
         <img src={articleObject.article_img_url} alt="" />
         <nav>
-            <Link to={`/articles/${articleObject.article_id}`}>Read Full Article</Link>
+            <Link to={`/articles/${articleObject.article_id}`}>
+            <button>Read Full Article</button>
+            </Link>
         </nav>
         </div>
         </>
