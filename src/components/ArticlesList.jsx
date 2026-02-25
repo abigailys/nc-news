@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
+import { useContext } from "react";
+import { UserContext } from "../context/User";
+import UserProvider from "../context/User";
 
 function ArticlesList() {
     const [articles, setArticles] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState();
+
+    const {currentUser} = useContext(UserContext);
 
     useEffect(() => {
         async function fetchArticles() {
@@ -29,6 +34,9 @@ function ArticlesList() {
 
     return (
         <>
+            <div className="current-user">
+                 <p><img src={currentUser.avatar_url} alt="" /> Logged in as: {currentUser.username}</p> 
+            </div>
             <div className="articles-list">
                 {articles.map((article) => (
                     <ArticleCard key={article.article_id} articleObject={article} />
@@ -36,6 +44,7 @@ function ArticlesList() {
             </div>
         </>
     )
+
 }
 
 export default ArticlesList;
