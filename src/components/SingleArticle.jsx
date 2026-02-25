@@ -56,10 +56,10 @@ function SingleArticle() {
                 <p>Comments: {article.comment_count}</p>
                 <p>Created at: {dateFormatter(article.created_at)}</p>
                 <img src={article.article_img_url} alt="" />
-            </div>
-
+            
             <div className="article-comments">
                 <CommentsList article_id={article_id} />
+            </div>
             </div>
         </>
 

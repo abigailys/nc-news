@@ -8,11 +8,18 @@ function App() {
 
   return (
     <div className="app">
-      <h1>NC News</h1>
-      <Routes>
+      <header>
+        <h1>NC News</h1>
+       </header>
+
+       <main>
+         <Routes>
         <Route path="/articles" element={<ArticlesList/>}/>
         <Route path="/articles/:article_id" element={<SingleArticle/>}/>
       </Routes>
+       </main>
+     
+     <footer>...</footer>
     </div>
 
 

@@ -3,7 +3,7 @@ import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 
 function ArticlesList() {
-    const [articles, setArticles] = useState()
+    const [articles, setArticles] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState();
 
@@ -12,7 +12,6 @@ function ArticlesList() {
             try {
                 setIsLoading(true)
                 const articlesResult = await getArticles()
-                console.log(articlesResult)
                 setArticles(articlesResult);
             } catch (error) {
                 setError(error.msg || "Something went wrong!");
@@ -28,8 +27,6 @@ function ArticlesList() {
         return (<p>Loading...</p>)
     };
 
-
-    console.log(articles)
     return (
         <>
             <div className="articles-list">
