@@ -1,5 +1,5 @@
 import { getCommentsByArticleId } from "../api";
-import CommentHandler from "./CommentHandler";
+import CommentPostHandler from "./CommentPostHandler";
 import CommentsCard from "./CommentsCard";
 import useFetch from "../hooks/useFetch";
 
@@ -18,7 +18,7 @@ function CommentsList({ article_id }) {
     return (
         <>
             <div className="comment-insert">
-                <CommentHandler article_id={article_id} setComments={setData}/>
+                <CommentPostHandler article_id={article_id} setComments={setData}/>
             </div>
             <div className="comments-list">
                 {data.map((comment) => (

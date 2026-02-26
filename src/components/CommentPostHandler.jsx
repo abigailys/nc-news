@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "../context/User";
 import { postComment } from "../api";
 
-function CommentHandler({ article_id, setComments }) {
+function CommentPostHandler({ article_id, setComments }) {
     const { currentUser } = useContext(UserContext);
     const [commentBody, setCommentBody] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,4 +38,4 @@ function CommentHandler({ article_id, setComments }) {
 
 }
 
-export default CommentHandler;
+export default CommentPostHandler;
