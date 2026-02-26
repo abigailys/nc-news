@@ -1,28 +1,27 @@
-import { useState, useEffect } from "react";
 import { getCommentsByArticleId } from "../api";
 import CommentHandler from "./CommentHandler";
 import CommentsCard from "./CommentsCard";
+import useFetch from "../hooks/useFetch";
 
 function CommentsList({ article_id }) {
-    const [comments, setComments] = useState([])
+    const { data, setData, isLoading, error } = useFetch(() => getCommentsByArticleId(article_id), [article_id]);
 
-    useEffect(() => {
-        async function fetchComments() {
-            const commentsResult = await getCommentsByArticleId(article_id)
-            setComments(commentsResult);
-        }
+    if (isLoading) {
+        return (<p>Loading...</p>)
+    };
 
-        fetchComments()
+    if (error) {
+        return (<p>Error...</p>)
+    };
 
-    }, [article_id])
 
     return (
         <>
             <div className="comment-insert">
-                <CommentHandler article_id={article_id} setComments={setComments}/>
+                <CommentHandler article_id={article_id} setComments={setData}/>
             </div>
             <div className="comments-list">
-                {comments.map((comment) => (
+                {data.map((comment) => (
                     <CommentsCard key={comment.comment_id} commentObject={comment} />
                 ))}
             </div>

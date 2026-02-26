@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function useFetch(fetchFunction, dependencies = []) {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -20,10 +20,10 @@ function useFetch(fetchFunction, dependencies = []) {
         }
 
         executeFetch();
-        
+
     }, dependencies)
 
-    return { data, isLoading, error }
+    return { data, setData, isLoading, error }
 }
 
 export default useFetch;
