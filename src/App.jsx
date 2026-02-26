@@ -1,24 +1,26 @@
 import './App.css'
 import ArticlesList from './components/ArticlesList'
 import SingleArticle from './components/SingleArticle';
-import UserProvider from './context/User';
 import { Routes, Route } from "react-router-dom";
+import { useContext } from 'react';
+import { UserContext } from './context/User';
 
 function App() {
-
+  const { currentUser } = useContext(UserContext);
   return (
     <div className="app">
       <header>
         <h1>NC News</h1>
+        <div className="current-user">
+          <p><img src={currentUser.avatar_url} alt="" /> Logged in as: {currentUser.username}</p>
+        </div>
       </header>
 
       <main>
-        <UserProvider>
           <Routes>
             <Route path="/articles" element={<ArticlesList />} />
             <Route path="/articles/:article_id" element={<SingleArticle />} />
           </Routes>
-        </UserProvider>
       </main>
 
       <footer>...</footer>
