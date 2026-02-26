@@ -25,7 +25,7 @@ function CommentHandler({ article_id, setComments }) {
     };
 
     if (error) {
-        return (<p>Error...</p>)
+        return (<p>{error}</p>)
     };
 
     return (
