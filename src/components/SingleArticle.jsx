@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import useFetch from "../hooks/useFetch";
+import { useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
 import CommentsList from "./CommentsList";
@@ -7,38 +9,25 @@ import VoteHandler from "./VoteHandler";
 import { updateArticleVotes } from "../api";
 
 
+
 function SingleArticle() {
-    const [article, setArticle] = useState()
-    const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState();
+    const { article_id } = useParams();
+    const { data, isLoading, error } = useFetch(() => getArticleById(article_id), [article_id]);
+
     const [votes, setVotes] = useState(0)
 
-    const { article_id } = useParams();
-
     useEffect(() => {
-        async function fetchArticle() {
-            try {
-                setIsLoading(true)
-                const articleResult = await getArticleById(article_id)
-                setArticle(articleResult);
-                setVotes(articleResult.votes); 
-            } catch (error) {
-                setError(error.msg || "Something went wrong!");
-            } finally {
-                setIsLoading(false);
-            }
-        }
-
-        fetchArticle()
-    }, [article_id])
+        if (data) setVotes(data.votes);
+    }, [data]);
 
     if (isLoading) {
         return (<p>Loading...</p>)
     };
 
-    if (!article) {
+    if (!data) {
         return <div>Article ID does not exist</div>;
     }
+
     if (error) {
         return <div>Error: {error}</div>;
     }
@@ -47,19 +36,19 @@ function SingleArticle() {
         <>
             <div>{isLoading && "Loading..."}</div>
             <div className="single-article">
-                <h2>{article.title}</h2>
-                <h4>{article.body}</h4>
-                <h6>by {article.author}</h6>
-                <h6>Topic: {article.topic}</h6>
+                <h2>{data.title}</h2>
+                <h4>{data.body}</h4>
+                <h6>by {data.author}</h6>
+                <h6>Topic: {data.topic}</h6>
                 <p>Votes: {votes}</p>
                 <VoteHandler itemId={article_id} votes={votes} setVotes={setVotes} updateArticleVotes={updateArticleVotes} />
-                <p>Comments: {article.comment_count}</p>
-                <p>Created at: {dateFormatter(article.created_at)}</p>
-                <img src={article.article_img_url} alt="" />
-            
-            <div className="article-comments">
-                <CommentsList article_id={article_id} />
-            </div>
+                <p>Comments: {data.comment_count}</p>
+                <p>Created at: {dateFormatter(data.created_at)}</p>
+                <img src={data.article_img_url} alt={data.title} />
+
+                <div className="article-comments">
+                    <CommentsList article_id={article_id} />
+                </div>
             </div>
         </>
 
