@@ -16,7 +16,7 @@ function CommentHandler({ article_id, setComments }) {
     return (
         <form onSubmit={handleCommentPost}>
             <input type="text" id="comment" name="comment" placeholder={`comment as ${currentUser.username}`} value={commentBody}
-                onChange={(e) => setCommentBody(e.target.value)} />
+                onChange={(e) => setCommentBody(e.target.value)}  required/>
                 <button type="submit">Post</button>
         </form>)
 
