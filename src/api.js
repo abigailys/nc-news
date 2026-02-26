@@ -62,3 +62,13 @@ export async function postComment(article_id, username, body) {
     const commentData = await response.json();
     return commentData.comment;
 }
+
+export async function deleteComment(comment_id) {
+    const response = await fetch(`https://nc-news-abigail.onrender.com/api/comments/${comment_id}`, {
+        method: "DELETE"
+    });
+
+    if(!response.ok) {
+        throw { status: response.status, msg: 'Failed to delete post' };
+    }
+}

@@ -22,7 +22,7 @@ function CommentsList({ article_id }) {
             </div>
             <div className="comments-list">
                 {data.map((comment) => (
-                    <CommentsCard key={comment.comment_id} commentObject={comment} />
+                    <CommentsCard key={comment.comment_id} commentObject={comment} setComments={setData}/>
                 ))}
             </div>
         </>
