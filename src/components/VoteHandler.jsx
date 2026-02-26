@@ -1,14 +1,13 @@
-function VoteHandler({ itemId, votes, setVotes, updateArticleVotes }) {
+function VoteHandler({ itemId, setVotes, updateArticleVotes }) {
 
 
-    function updateVotes(inc_votes) {
-        setVotes(votes + inc_votes) // optimistic render
+    async function updateVotes(inc_votes) {
+        setVotes((votes) => votes + inc_votes) // optimistic render
 
         try {
-            updateArticleVotes(itemId, inc_votes) // update database
+            await updateArticleVotes(itemId, inc_votes) // update database
         } catch (error) {
-            setVotes(votes - inc_votes) // reverse if failed
-            setError(error.msg || "Unable to update votes. Please try again.")
+            setVotes((votes) => votes - inc_votes) // reverse if failed
         }
     }
 
