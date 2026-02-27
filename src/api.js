@@ -1,5 +1,5 @@
-export async function getArticles() {
-    const response = await fetch("https://nc-news-abigail.onrender.com/api/articles");
+export async function getArticles(params) {
+    const response = await fetch(`https://nc-news-abigail.onrender.com/api/articles?${params}`);
 
     if(!response.ok) {
         throw { status: response.status, msg: 'Failed to fetch articles' };
