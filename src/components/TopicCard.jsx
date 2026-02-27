@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function TopicCard({ topicObject }) {
 
     return (
@@ -8,12 +9,11 @@ function TopicCard({ topicObject }) {
                     <p className="topic-card-slug">{topicObject.slug}</p>
                     <p className="topic-card-description">{topicObject.description}</p>
                 </div>
-
-                {/* <nav>
-                    <Link to={`/articles/${articleObject.article_id}`}>
-                        <button>Read Full Article</button>
+                <nav>
+                    <Link to={`/articles?topic=${topicObject.slug}`}>
+                        <button>View Articles</button>
                     </Link>
-                </nav> */}
+                </nav>
             </div>
 
 
