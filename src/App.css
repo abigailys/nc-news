@@ -1,6 +1,6 @@
 #root {
   font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
- min-height: 100vh;
+  min-height: 100vh;
   min-height: 100dvh;
   padding: 0 var;
   text-align: center;
@@ -9,25 +9,149 @@
   background-color: rgb(255, 244, 234);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh; 
+}
+
+main {
+  flex-grow: 1;
 }
 
 header {
   background-color: rgb(13, 73, 91);
   color: rgb(255, 156, 56);
-  margin: 1rem;
+  padding: 0.75rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.header-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.current-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.current-user img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.current-user p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: white;
+}
+
+footer {
+  background-color: rgb(13, 73, 91);
+  color: rgb(255, 156, 56);
+  padding: 1.5rem;
+  margin-top: auto;
+  text-align: center;
+}
+
+.articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .article-card {
-  border: 1px solid rgb(177, 111, 5);
-  margin: 1rem auto;
-  max-width: 75%;
-  padding: 1rem;
-  border-radius: 10px;
+  position: relative;
   background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.105);
+  border: 1px solid rgba(0, 0, 0, 0.23);
+}
+
+.article-card img {
+  margin: 0.5rem 0;
+  border-radius: 8px;
+}
+
+.topic-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #fafafa;
+  color: #666;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.title-section h2 {
+  margin: 0;
+  padding-right: 4rem;
+}
+
+.author-tag {
+  margin: 0.2rem 0 1rem 0;
+  color: #555;
+}
+
+.article-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.stats {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.stats p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.article-card button {
+  border: solid 1px rgb(13, 73, 91);
+  color: rgb(13, 73, 91);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.article-card button:hover {
+  background-color: rgb(13, 73, 91);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.article-card button:active {
+  transform: translateY(0); 
 }
 
 .comments-list {
@@ -84,8 +208,8 @@ header {
 }
 
 .current-user img {
-  width : 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 
@@ -99,9 +223,9 @@ header {
 }
 
 .topic-card-text {
-position: absolute;
+  position: absolute;
   background-color: rgba(255, 255, 255, 0.85);
- top: 50%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
@@ -115,7 +239,7 @@ position: absolute;
 .topic-card-description {
   font-size: 1rem;
   margin-top: 0;
-  
+
 }
 
 .topic-card nav {

@@ -5,15 +5,22 @@ import TopicsList from './components/TopicsList';
 import { Routes, Route } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from './context/User';
+import { Link } from "react-router-dom";
 
 function App() {
   const { currentUser } = useContext(UserContext);
   return (
     <div className="app">
       <header>
-        <h1>NC News</h1>
-        <div className="current-user">
-          <p><img src={currentUser.avatar_url} alt="" /> Logged in as: {currentUser.username}</p>
+        <div className="header-content">
+          <Link to="/articles" className="header-link">
+            <h1>NC News</h1>
+          </Link>
+          
+          <div className="current-user">
+            <img src={currentUser.avatar_url} alt="User avatar" />
+            <p><span>Logged in as:</span> {currentUser.username}</p>
+          </div>
         </div>
       </header>
 

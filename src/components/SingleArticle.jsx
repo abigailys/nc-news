@@ -42,7 +42,7 @@ function SingleArticle() {
                 <h6>Topic: {data.topic}</h6>
                 <p>Votes: {votes}</p>
                 <VoteHandler itemId={article_id} votes={votes} setVotes={setVotes} updateArticleVotes={updateArticleVotes} />
-                <p>Comments: {data.comment_count}</p>
+                <p>💬 {data.comment_count}</p>
                 <p>Created at: {dateFormatter(data.created_at)}</p>
                 <img src={data.article_img_url} alt={data.title} />
 
