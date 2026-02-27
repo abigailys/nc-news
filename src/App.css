@@ -108,5 +108,9 @@ position: absolute;
 .topic-card-description {
   font-size: 1rem;
   margin-top: 0;
-  margin-bottom: 3rem;
+  
+}
+
+.topic-card nav {
+  margin: 1rem;
 }

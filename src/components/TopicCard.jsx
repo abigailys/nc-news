@@ -8,12 +8,13 @@ function TopicCard({ topicObject }) {
                 <div className="topic-card-text">
                     <p className="topic-card-slug">{topicObject.slug}</p>
                     <p className="topic-card-description">{topicObject.description}</p>
-                </div>
-                <nav>
+                    <nav>
                     <Link to={`/articles?topic=${topicObject.slug}`}>
                         <button>View Articles</button>
                     </Link>
                 </nav>
+                </div>
+                
             </div>
 
 
