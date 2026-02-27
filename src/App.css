@@ -45,6 +45,13 @@ header {
   max-width: 90%;
   border-radius: 10px;
   background-color: rgb(250, 249, 247);
+  transition: background-color 5s ease-out;
+}
+
+@starting-style {
+  .comment-card {
+    background-color: rgb(252, 222, 161);
+  }
 }
 
 .comment-insert {
