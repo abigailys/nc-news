@@ -4,8 +4,11 @@ function TopicCard({ topicObject }) {
         <>
             <div className="topic-card">
                 <img src={topicObject.img_url} alt={topicObject.slug} />
-                <div className="topic-card-slug">{topicObject.slug}</div>
-                <div className="top-card-description">{topicObject.description}</div>
+                <div className="topic-card-text">
+                    <p className="topic-card-slug">{topicObject.slug}</p>
+                    <p className="topic-card-description">{topicObject.description}</p>
+                </div>
+
                 {/* <nav>
                     <Link to={`/articles/${articleObject.article_id}`}>
                         <button>Read Full Article</button>

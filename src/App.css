@@ -81,3 +81,32 @@ header {
     height: 50px;
   border-radius: 50%;
 }
+
+.topic-card {
+  position: relative;
+}
+
+.topic-card img {
+  opacity: 50%;
+  width: 75%;
+}
+
+.topic-card-text {
+position: absolute;
+  background-color: rgba(255, 255, 255, 0.85);
+ top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+.topic-card-slug {
+  font-size: 3rem;
+  margin-bottom: 0
+}
+
+.topic-card-description {
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
