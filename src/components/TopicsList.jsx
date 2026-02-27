@@ -15,6 +15,7 @@ function TopicsList() {
 
     return (
         <>
+        <h1>TOPICS</h1>
             <div className="topics-list">
                 {data.map((topic) => (
                     <TopicCard key={topic.slug} topicObject={topic} />
