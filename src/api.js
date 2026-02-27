@@ -72,3 +72,14 @@ export async function deleteComment(comment_id) {
         throw { status: response.status, msg: 'Failed to delete post' };
     }
 }
+
+export async function getTopics() {
+    const response = await fetch("https://nc-news-abigail.onrender.com/api/topics");
+
+    if(!response.ok) {
+        throw { status: response.status, msg: 'Failed to fetch list of topics' };
+    }
+
+    const topicsData = await response.json();
+    return topicsData.topics;
+}

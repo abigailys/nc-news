@@ -1,6 +1,7 @@
 import './App.css'
-import ArticlesList from './components/ArticlesList'
+import ArticlesList from './components/ArticlesList';
 import SingleArticle from './components/SingleArticle';
+import TopicsList from './components/TopicsList';
 import { Routes, Route } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from './context/User';
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/articles" element={<ArticlesList />} />
             <Route path="/articles/:article_id" element={<SingleArticle />} />
+            <Route path="/topics" element={<TopicsList />} />
           </Routes>
       </main>
 
