@@ -84,6 +84,6 @@ The app should now be running locally.
 ## Related Repository
 
 Backend API:  
-https://github.com/yourusername/nc-news-api
+https://github.com/abigailys/backend-nc-news
 
 ---
