@@ -2,7 +2,7 @@ import './App.css'
 import ArticlesList from './components/ArticlesList';
 import SingleArticle from './components/SingleArticle';
 import TopicsList from './components/TopicsList';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from './context/User';
 import { Link } from "react-router-dom";
