@@ -1,13 +1,19 @@
 :root {
-  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; */
-  font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: ui-sans-serif, system-ui, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
-  margin: auto;
+  
+  
+  --max-width: 1200px;
+  --spacing: 1rem;
+  --radius: 12px;
+  --color-bg: rgb(255, 244, 234);
+  --color-primary: rgb(13, 73, 91);
+  --color-accent: rgb(255, 156, 56);
 }
 
-@media screen {
-  body {
-    max-width: 1500px;
-  }
+body {
+  margin: 0 auto;
+  padding: 10 var(--spacing);
+  background: #f9f9f9;
+  color: #222;
 }
