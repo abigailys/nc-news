@@ -16,8 +16,8 @@ function CommentsList({ article_id }) {
 
 
     return (
-        <>
-            <div className="comment-insert">
+        <section className="comments-container">
+            <div>
                 <CommentPostHandler article_id={article_id} setComments={setData}/>
             </div>
             <div className="comments-list">
@@ -25,7 +25,7 @@ function CommentsList({ article_id }) {
                     <CommentsCard key={comment.comment_id} commentObject={comment} setComments={setData}/>
                 ))}
             </div>
-        </>
+        </section>
     )
 }
 
