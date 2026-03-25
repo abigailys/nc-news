@@ -33,25 +33,40 @@ function SingleArticle() {
     }
 
     return (
-        <>
-            <div>{isLoading && "Loading..."}</div>
-            <div className="single-article">
+        <article className="single-article-page">
+            <div className="article-header">
+                <span className="single-topic-tag">#{data.topic}</span>
                 <h2>{data.title}</h2>
-                <h4>{data.body}</h4>
-                <h6>by {data.author}</h6>
-                <h6>Topic: {data.topic}</h6>
-                <p>Votes: {votes}</p>
-                <VoteHandler itemId={article_id} votes={votes} setVotes={setVotes} updateArticleVotes={updateArticleVotes} />
-                <p>💬 {data.comment_count}</p>
-                <p>Created at: {dateFormatter(data.created_at)}</p>
-                <img src={data.article_img_url} alt={data.title} />
-
-                <div className="article-comments">
-                    <CommentsList article_id={article_id} />
+                <div className="article-info">
+                    <span>By <strong>{data.author}</strong></span>
+                    <span className="dot-separator"> • </span>
+                    <time>{dateFormatter(data.created_at)}</time>
                 </div>
             </div>
-        </>
 
+            <img src={data.article_img_url} alt={data.title} className="featured-img" />
+
+            <div className="article-body">
+                <p>{data.body}</p>
+            </div>
+
+            <div className="article-footer">
+                <div className="stats">
+                    <p>👍 {votes}</p>
+                    <p>💬 {data.comment_count}</p>
+                </div>
+                <div className="vote-buttons">
+                    <VoteHandler itemId={article_id} votes={votes} setVotes={setVotes} updateArticleVotes={updateArticleVotes} />
+                </div>
+            </div>
+
+            <hr className="section-divider" />
+
+            <section className="article-comments">
+                <h3>Comments</h3>
+                <CommentsList article_id={article_id} />
+            </section>
+        </article>
     )
 }
 
