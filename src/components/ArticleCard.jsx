@@ -9,11 +9,11 @@ function ArticleCard({ articleObject }) {
                 <span className="topic-tag">#{articleObject.topic}</span>
 
                 <div className="title-section">
-                    <h2>{articleObject.title}</h2>
+                    <h3>{articleObject.title}</h3>
                     <h6 className="author-tag">👤 {articleObject.author}</h6>
                 </div>
 
-                <img src={articleObject.article_img_url} alt="" />
+                <img src={articleObject.article_img_url} className="article-card-img" alt="" />
 
                 <div className="article-card-footer">
                     <div className="stats">
