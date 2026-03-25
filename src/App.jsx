@@ -18,6 +18,7 @@ function App() {
               <h1>NC <span>NEWS</span></h1>
             </Link>
             <nav className="header-nav">
+              <Link to="/articles">Home</Link>
               <Link to="/topics">Topics</Link>
             </nav>
           </div>

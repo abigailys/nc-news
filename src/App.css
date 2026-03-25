@@ -54,6 +54,7 @@ header {
   font-weight: 500;
   font-size: 0.9rem;
   transition: color 0.2s;
+  margin: 2rem;
 }
 
 .header-nav a:hover {
