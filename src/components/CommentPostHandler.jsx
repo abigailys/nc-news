@@ -29,13 +29,20 @@ function CommentPostHandler({ article_id, setComments }) {
     };
 
     return (
-        <form onSubmit={handleCommentPost}>
-            <input type="text" id="comment" name="comment" placeholder={`comment as ${currentUser.username}`} value={commentBody}
-                onChange={(e) => setCommentBody(e.target.value)} disabled={isSubmitting} required />
-            <button type="submit">{isSubmitting ? "Posting..." : "Post"}</button>
+        <form className="comment-insert" onSubmit={handleCommentPost}>
+            <label htmlFor="comment">Join the conversation</label>
+            <div className="input-group">
+                <input 
+                    type="text" 
+                    id="comment" 
+                    placeholder={`comment as ${currentUser.username}`} 
+                    value={commentBody}
+                    onChange={(e) => setCommentBody(e.target.value)} 
+                    disabled={isSubmitting} 
+                    required />
+                <button type="submit">{isSubmitting ? "Posting..." : "Post"}</button>
+            </div>
         </form>)
-
-
 }
 
 export default CommentPostHandler;
